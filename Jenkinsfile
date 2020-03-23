@@ -18,7 +18,6 @@ pipeline {
         ...
         }
     }
-            }
     stage ('Checkout thhe sorce code'){
         steps {
          checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '887948f7-3739-41e7-bf8c-971977673050', url: 'https://github.com/madhavsandireddi/sample-appservice.git']]])

@@ -19,20 +19,20 @@ pipeline {
         }
     }
         stage ('Checkout thhe sorce code'){
-            steps {
-         checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '887948f7-3739-41e7-bf8c-971977673050', url: 'https://github.com/madhavsandireddi/sample-appservice.git']]])
-     }
-
-            }
-stage ('Building the  source code using maven'){
         steps {
-            sh 'mvn clean compile install'
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '887948f7-3739-41e7-bf8c-971977673050', url: 'https://github.com/madhavsandireddi/sample-appservice.git']]])
+        }
+
+    }
+        stage ('Building the  source code using maven'){
+        steps {
+        sh 'mvn clean compile install'
         }
     }
- stage ('Archive artifacts for service app'){
+        stage ('Archive artifacts for service app'){
         steps {
-            archiveArtifacts '**/**/*.war'
+        archiveArtifacts '**/**/*.war'
+        }
     }
-    }
-    }
-    }
+        }
+}

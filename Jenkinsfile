@@ -1,4 +1,4 @@
-library('service-libraries')
+library('serviceapp-library')
 node{
 serviceAppBuild{}
 }
